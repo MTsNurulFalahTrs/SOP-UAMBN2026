@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <main>
+        <h1>Password Generator</h1>
+
+        <div class="form-group">
+            <label for="length">Panjang Password: <span id="lengthValue">16</span></label>
+            <input type="range" id="length" name="length" min="8" max="32" value="16" />
+        </div>
+
+        <fieldset>
+            <legend>Karakter yang disertakan:</legend>
+            <div class="checkbox-group">
+                <input type="checkbox" id="includeLowercase" checked />
+                <label for="includeLowercase" data-tooltip="abcdefghijklmnopqrstuvwxyz">Huruf kecil (a-z)</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="includeUppercase" checked />
+                <label for="includeUppercase" data-tooltip="ABCDEFGHIJKLMNOPQRSTUVWXYZ">Huruf besar (A-Z)</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="includeNumbers" checked />
+                <label for="includeNumbers" data-tooltip="0123456789">Angka (0-9)</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="includeSymbols" />
+                <label for="includeSymbols" data-tooltip="!@#$%^&*()-_=+[]{}|;:,.<>?/~`">Simbol (!@#$...)</label>
+            </div>
+        </fieldset>
+
+        <button id="generateBtn" type="button">Generate Password</button>
+
+        <div class="output-group">
+            <label for="passwordOutput">Password yang dihasilkan:</label>
+            <textarea id="passwordOutput" readonly rows="3" aria-live="polite"></textarea>
+            <button id="copyBtn" type="button" aria-label="Salin password">Salin Password</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

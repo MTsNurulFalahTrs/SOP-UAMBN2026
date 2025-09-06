@@ -1,0 +1,202 @@
+:root {
+    --color-bg: #f5f7fa;
+    --color-primary: #4a90e2;
+    --color-primary-hover: #357ABD;
+    --color-text: #333;
+    --color-label: #555;
+    --color-border: #ccc;
+    --color-output-bg: #e9ecef;
+    --color-focus: #80bdff;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--color-bg);
+    font-family: var(--font-family);
+    color: var(--color-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+main {
+    background: white;
+    padding: 2rem 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.form-group,
+.output-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--color-label);
+}
+
+input[type="range"] {
+    width: 100%;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+fieldset {
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+legend {
+    font-weight: 700;
+    color: var(--color-label);
+    padding: 0 0.5rem;
+}
+
+button#generateBtn {
+    width: 100%;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button#generateBtn:hover,
+button#generateBtn:focus {
+    background-color: var(--color-primary-hover);
+    outline: none;
+}
+
+textarea#passwordOutput {
+    width: 100%;
+    resize: none;
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+    font-family: monospace;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-output-bg);
+    color: var(--color-text);
+    user-select: none; /* mencegah seleksi teks */
+}
+
+textarea#passwordOutput:focus {
+    outline: 2px solid var(--color-focus);
+}
+
+/* Styling tombol copy */
+#copyBtn {
+    margin-top: 0.75rem;
+    width: 100%;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#copyBtn:hover,
+#copyBtn:focus {
+    background-color: var(--color-primary-hover);
+    outline: none;
+}
+
+/* Tooltip styling */
+label[data-tooltip] {
+    position: relative;
+    cursor: help;
+}
+
+label[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%; /* posisi di atas label */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-primary);
+    color: white;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 0.85rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+label[data-tooltip]:hover::after,
+label[data-tooltip]:focus::after {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Panah kecil di bawah tooltip */
+label[data-tooltip]::before {
+    content: '';
+    position: absolute;
+    bottom: 115%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--color-primary) transparent transparent transparent;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 10;
+}
+
+label[data-tooltip]:hover::before,
+label[data-tooltip]:focus::before {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Mencegah seleksi teks dan copy-paste di seluruh halaman */
+body {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
