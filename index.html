@@ -1,49 +1,376 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Password Generator</title>
-    <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOP & Tata Tertib UAMBN CAT 2026</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f8fafc;
+    color: #334155;
+}
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 350px;
+}
+@media (min-width: 768px) {
+    .chart-container {
+        height: 400px;
+    }
+}
+.card-hover {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1.75rem;
+    top: 0.5rem;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    background-color: #06b6d4;
+    border: 3px solid #1e3a8a;
+}
+.timeline-line::before {
+    content: '';
+    position: absolute;
+    left: 0.75rem;
+    top: 2rem;
+    bottom: -2rem;
+    width: 2px;
+    background-color: #cbd5e1;
+    z-index: 0;
+}
+</style>
 </head>
-<body>
-    <main>
-        <h1>Password Generator</h1>
+<body class="antialiased">
 
-        <div class="form-group">
-            <label for="length">Panjang Password: <span id="lengthValue">16</span></label>
-            <input type="range" id="length" name="length" min="8" max="32" value="16" />
+<header class="bg-[#1e3a8a] text-white py-12 px-6 shadow-xl relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10 bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABZJREFUeNpi2rVrf2QAAAAQCAECAAADAAIAAoP/l9zIAAAAAElFTkSuQmCC')] repeat"></div>
+    <div class="max-w-7xl mx-auto relative z-10 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-[#06b6d4]">UAMBN CAT 2026</h1>
+        <p class="text-xl md:text-2xl font-light text-slate-200">Panduan SOP & Tata Tertib Ujian Akhir Madrasah Berstandar Nasional Berbasis Komputer</p>
+    </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 py-12">
+
+    <section class="mb-16 text-center max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold text-[#1e3a8a] mb-6">Integritas dan Kedisiplinan Kunci Sukses Ujian</h2>
+        <p class="text-lg text-slate-600 leading-relaxed">
+            Menghadapi UAMBN (Ujian Akhir Madrasah Berstandar Nasional) Tahun 2026 yang menggunakan moda Computer Assisted Test (CAT), madrasah dituntut untuk menyelenggarakan ujian yang kredibel, transparan, dan tertib. Dokumen infografis ini merangkum aturan main yang wajib dipatuhi oleh seluruh ekosistem ujian guna menjamin kelancaran dan kejujuran pelaksanaan.
+        </p>
+    </section>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+
+        <div class="bg-white rounded-2xl shadow-lg border-t-4 border-[#06b6d4] p-8 card-hover flex flex-col h-full">
+            <div class="flex items-center mb-6">
+                <span class="text-4xl mr-4">🖥️</span>
+                <h3 class="text-2xl font-bold text-[#1e3a8a]">Tata Tertib Ruang Ujian</h3>
+            </div>
+            <ul class="space-y-4 flex-grow text-slate-600">
+                <li class="flex items-start"><span class="text-[#06b6d4] mr-2">✔</span> Ruang ujian harus dalam keadaan steril, bersih, tenang, dan memiliki pencahayaan serta sirkulasi udara yang memadai.</li>
+                <li class="flex items-start"><span class="text-[#06b6d4] mr-2">✔</span> Jarak antar peserta ujian minimal 1 meter ke segala arah.</li>
+                <li class="flex items-start"><span class="text-[#06b6d4] mr-2">✔</span> Pintu ruang ujian wajib ditutup dan dijaga kepatuhannya selama ujian CAT berlangsung.</li>
+                <li class="flex items-start"><span class="text-[#06b6d4] mr-2">✔</span> Setiap perangkat PC/Laptop harus telah diuji coba kelancaran jaringan lokal/internetnya sehari sebelum pelaksanaan.</li>
+                <li class="flex items-start"><span class="text-[#06b6d4] mr-2">✔</span> Di dalam ruang ujian hanya diperbolehkan ada Peserta, Pengawas Ruang, dan Proktor/Teknisi jika terjadi kendala teknis.</li>
+            </ul>
         </div>
 
-        <fieldset>
-            <legend>Karakter yang disertakan:</legend>
-            <div class="checkbox-group">
-                <input type="checkbox" id="includeLowercase" checked />
-                <label for="includeLowercase" data-tooltip="abcdefghijklmnopqrstuvwxyz">Huruf kecil (a-z)</label>
+        <div class="bg-white rounded-2xl shadow-lg border-t-4 border-[#f97316] p-8 card-hover flex flex-col h-full">
+            <div class="flex items-center mb-6">
+                <span class="text-4xl mr-4">👨‍🏫</span>
+                <h3 class="text-2xl font-bold text-[#1e3a8a]">Tata Tertib Pengawas Ruang</h3>
             </div>
-            <div class="checkbox-group">
-                <input type="checkbox" id="includeUppercase" checked />
-                <label for="includeUppercase" data-tooltip="ABCDEFGHIJKLMNOPQRSTUVWXYZ">Huruf besar (A-Z)</label>
-            </div>
-            <div class="checkbox-group">
-                <input type="checkbox" id="includeNumbers" checked />
-                <label for="includeNumbers" data-tooltip="0123456789">Angka (0-9)</label>
-            </div>
-            <div class="checkbox-group">
-                <input type="checkbox" id="includeSymbols" />
-                <label for="includeSymbols" data-tooltip="!@#$%^&*()-_=+[]{}|;:,.<>?/~`">Simbol (!@#$...)</label>
-            </div>
-        </fieldset>
-
-        <button id="generateBtn" type="button">Generate Password</button>
-
-        <div class="output-group">
-            <label for="passwordOutput">Password yang dihasilkan:</label>
-            <textarea id="passwordOutput" readonly rows="3" aria-live="polite"></textarea>
-            <button id="copyBtn" type="button" aria-label="Salin password">Salin Password</button>
+            <ul class="space-y-4 flex-grow text-slate-600">
+                <li class="flex items-start"><span class="text-[#f97316] mr-2">✔</span> Hadir di lokasi ujian 30 menit sebelum jadwal sesi ujian dimulai.</li>
+                <li class="flex items-start"><span class="text-[#f97316] mr-2">✔</span> Melakukan verifikasi identitas peserta (Kartu Ujian dan ID) sebelum peserta memasuki ruang.</li>
+                <li class="flex items-start"><span class="text-[#f97316] mr-2">✔</span> Membacakan tata tertib kepada peserta dan membagikan token ujian yang dirilis oleh Proktor.</li>
+                <li class="flex items-start"><span class="text-[#f97316] mr-2">✔</span> Menjaga ketertiban dan dilarang merokok, makan, tidur, membaca koran, atau bermain gawai (HP) selama ujian berlangsung.</li>
+                <li class="flex items-start"><span class="text-[#f97316] mr-2">✔</span> Menandatangani dan mengisi Berita Acara Pelaksanaan Ujian beserta daftar hadir peserta.</li>
+            </ul>
         </div>
-    </main>
 
-    <script src="script.js"></script>
+        <div class="bg-white rounded-2xl shadow-lg border-t-4 border-[#1e3a8a] p-8 card-hover flex flex-col h-full lg:col-span-1 md:col-span-2">
+            <div class="flex items-center mb-6">
+                <span class="text-4xl mr-4">🎓</span>
+                <h3 class="text-2xl font-bold text-[#1e3a8a]">Tata Tertib Peserta Ujian</h3>
+            </div>
+            <ul class="space-y-4 flex-grow text-slate-600">
+                <li class="flex items-start"><span class="text-[#1e3a8a] font-bold mr-2">1.</span> Hadir di madrasah 15 menit sebelum ujian dimulai. Keterlambatan lebih dari 30 menit tidak diizinkan mengikuti ujian.</li>
+                <li class="flex items-start"><span class="text-[#1e3a8a] font-bold mr-2">2.</span> Wajib membawa dan menunjukkan Kartu Peserta Ujian UAMBN 2026.</li>
+                <li class="flex items-start"><span class="text-red-500 font-bold mr-2">🚫</span> Dilarang keras membawa gawai (HP), jam tangan pintar, kalkulator, catatan, dan buku ke dalam meja ujian. Segala barang pribadi ditinggal di area yang ditentukan.</li>
+                <li class="flex items-start"><span class="text-[#1e3a8a] font-bold mr-2">4.</span> Login ke aplikasi CAT menggunakan username dan password resmi, kemudian memasukkan token ujian dengan benar.</li>
+                <li class="flex items-start"><span class="text-[#1e3a8a] font-bold mr-2">5.</span> Mengerjakan soal ujian secara mandiri dan jujur. Dilarang berdiskusi, memberikan atau meminta jawaban dari pihak manapun.</li>
+                <li class="flex items-start"><span class="text-[#1e3a8a] font-bold mr-2">6.</span> Menekan tombol "Selesai" pada aplikasi CAT dan meminta izin pengawas sebelum meninggalkan ruangan setelah waktu selesai.</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <section class="mb-16">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-bold text-[#1e3a8a] mb-4">Analisis Kepatuhan & Regulasi</h2>
+            <p class="text-lg text-slate-600">Visualisasi data berikut menunjukkan titik berat aturan dan fokus pengawasan guna meminimalisir kecurangan atau kendala teknis selama pelaksanaan sistem CAT.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            
+            <div class="bg-white rounded-2xl shadow-md p-6">
+                <h3 class="text-xl font-bold text-center mb-2 text-[#1e3a8a]">Distribusi Beban Regulasi</h3>
+                <p class="text-sm text-center text-slate-500 mb-6">Persentase jumlah detail SOP yang harus dipatuhi oleh masing-masing entitas.</p>
+                <div class="chart-container">
+                    <canvas id="aturanDonutChart"></canvas>
+                </div>
+                <div class="mt-6 text-sm text-slate-600 bg-slate-50 p-4 rounded-lg">
+                    <strong class="text-[#1e3a8a]">Wawasan Data:</strong> Mayoritas aturan operasional bertumpu pada perilaku Peserta Ujian (50%), yang difokuskan pada larangan kecurangan dan prosedur teknis pengerjaan aplikasi CAT. Pengawas dan Infrastruktur memegang sisa 50% untuk memastikan lingkungan ujian tetap stabil.
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-md p-6">
+                <h3 class="text-xl font-bold text-center mb-2 text-[#1e3a8a]">Radar Kompetensi Kepatuhan</h3>
+                <p class="text-sm text-center text-slate-500 mb-6">Fokus tuntutan kedisiplinan antara Pengawas dan Peserta dalam 5 dimensi utama.</p>
+                <div class="chart-container">
+                    <canvas id="kepatuhanRadarChart"></canvas>
+                </div>
+                <div class="mt-6 text-sm text-slate-600 bg-slate-50 p-4 rounded-lg">
+                    <strong class="text-[#1e3a8a]">Wawasan Data:</strong> Grafik radar ini membandingkan titik tekan kedisiplinan. Peserta sangat dituntut pada aspek <span class="italic text-[#f97316]">Integritas & Kejujuran</span> dan pemahaman <span class="italic text-[#f97316]">Teknis CAT</span>. Sebaliknya, Pengawas memiliki beban tertinggi pada <span class="italic text-[#06b6d4]">Kelengkapan Administrasi</span> dan penjagaan <span class="italic text-[#06b6d4]">Ketertiban Ruangan</span>.
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="bg-white rounded-2xl shadow-xl p-8 mb-12 border-l-8 border-[#1e3a8a]">
+        <h2 class="text-3xl font-bold text-[#1e3a8a] mb-8 text-center">Alur Standar Pelaksanaan Sesi UAMBN CAT</h2>
+        <p class="text-center text-slate-600 mb-10 max-w-2xl mx-auto">Prosedur berikut wajib dipatuhi untuk memastikan setiap sesi ujian berjalan sesuai dengan waktu yang telah ditetapkan tanpa ada kendala sinkronisasi.</p>
+        
+        <div class="max-w-3xl mx-auto relative pl-8 sm:pl-0 timeline-line sm:before:hidden">
+            <div class="space-y-8">
+                
+                <div class="relative sm:flex items-center justify-between group">
+                    <div class="hidden sm:block w-5/12 text-right pr-8">
+                        <span class="text-lg font-bold text-[#06b6d4]">30 Menit Sebelum Ujian</span>
+                    </div>
+                    <div class="absolute left-[-2rem] sm:left-1/2 sm:-ml-3 top-1 sm:top-1/2 sm:-mt-3 w-6 h-6 rounded-full bg-[#1e3a8a] border-4 border-white shadow group-hover:scale-125 transition-transform"></div>
+                    <div class="sm:w-5/12 pl-4 sm:pl-8">
+                        <span class="block sm:hidden text-lg font-bold text-[#06b6d4] mb-1">30 Menit Sebelum Ujian</span>
+                        <div class="bg-slate-50 p-4 rounded-lg shadow-sm border border-slate-100">
+                            <h4 class="font-bold text-slate-800">Persiapan Pengawas & Ruangan</h4>
+                            <p class="text-sm text-slate-600 mt-1">Pengawas menerima dokumen dari panitia. Proktor memastikan server lokal dan aplikasi CAT pada klien siap digunakan.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative sm:flex items-center justify-between flex-row-reverse group">
+                    <div class="hidden sm:block w-5/12 text-left pl-8">
+                        <span class="text-lg font-bold text-[#f97316]">15 Menit Sebelum Ujian</span>
+                    </div>
+                    <div class="absolute left-[-2rem] sm:left-1/2 sm:-ml-3 top-1 sm:top-1/2 sm:-mt-3 w-6 h-6 rounded-full bg-[#1e3a8a] border-4 border-white shadow group-hover:scale-125 transition-transform"></div>
+                    <div class="sm:w-5/12 pr-0 sm:pr-8 pl-4 sm:pl-0 text-left sm:text-right">
+                        <span class="block sm:hidden text-lg font-bold text-[#f97316] mb-1">15 Menit Sebelum Ujian</span>
+                        <div class="bg-slate-50 p-4 rounded-lg shadow-sm border border-slate-100">
+                            <h4 class="font-bold text-slate-800">Masuknya Peserta</h4>
+                            <p class="text-sm text-slate-600 mt-1">Peserta memasuki ruangan satu per satu, meletakkan barang bawaan, duduk sesuai denah, dan menerima arahan tata tertib.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative sm:flex items-center justify-between group">
+                    <div class="hidden sm:block w-5/12 text-right pr-8">
+                        <span class="text-lg font-bold text-green-600">Waktu Mulai Ujian</span>
+                    </div>
+                    <div class="absolute left-[-2rem] sm:left-1/2 sm:-ml-3 top-1 sm:top-1/2 sm:-mt-3 w-6 h-6 rounded-full bg-[#1e3a8a] border-4 border-white shadow group-hover:scale-125 transition-transform"></div>
+                    <div class="sm:w-5/12 pl-4 sm:pl-8">
+                        <span class="block sm:hidden text-lg font-bold text-green-600 mb-1">Waktu Mulai Ujian</span>
+                        <div class="bg-slate-50 p-4 rounded-lg shadow-sm border border-slate-100">
+                            <h4 class="font-bold text-slate-800">Rilis Token & Pengerjaan</h4>
+                            <p class="text-sm text-slate-600 mt-1">Proktor merilis token CBT. Pengawas menuliskannya di papan tulis. Peserta melakukan login, memasukkan token, dan mulai mengerjakan soal uji.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative sm:flex items-center justify-between flex-row-reverse group">
+                    <div class="hidden sm:block w-5/12 text-left pl-8">
+                        <span class="text-lg font-bold text-red-500">Selesai Ujian</span>
+                    </div>
+                    <div class="absolute left-[-2rem] sm:left-1/2 sm:-ml-3 top-1 sm:top-1/2 sm:-mt-3 w-6 h-6 rounded-full bg-[#1e3a8a] border-4 border-white shadow group-hover:scale-125 transition-transform"></div>
+                    <div class="sm:w-5/12 pr-0 sm:pr-8 pl-4 sm:pl-0 text-left sm:text-right">
+                        <span class="block sm:hidden text-lg font-bold text-red-500 mb-1">Selesai Ujian</span>
+                        <div class="bg-slate-50 p-4 rounded-lg shadow-sm border border-slate-100">
+                            <h4 class="font-bold text-slate-800">Finalisasi & Berita Acara</h4>
+                            <p class="text-sm text-slate-600 mt-1">Peserta menekan tombol logout. Pengawas mengumpulkan draft/kertas buram (jika ada), melengkapi berita acara, dan peserta diizinkan keluar.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="bg-slate-900 text-slate-400 py-8 text-center text-sm">
+    <div class="max-w-7xl mx-auto px-6">
+        <p>Hak Cipta © 2026. Dokumen Penyelenggaraan UAMBN Berbasis CAT.</p>
+        <p class="mt-2">MTs Nurul Falah Kelurahan Terawas</p>
+        <p class="mt-2">Integritas Madrasah, Prestasi Bangsa.</p>
+    </div>
+</footer>
+
+<script>
+    const wrapLabelString = (label, max = 16) => {
+        const words = label.split(' ');
+        const lines = [];
+        let currentLine = '';
+        words.forEach(word => {
+            if ((currentLine + word).length > max) {
+                if (currentLine) lines.push(currentLine.trim());
+                currentLine = word + ' ';
+            } else {
+                currentLine += word + ' ';
+            }
+        });
+        if (currentLine) lines.push(currentLine.trim());
+        return lines;
+    };
+
+    const donutLabels = [
+        "Kepatuhan Peserta (Perilaku & Teknis)", 
+        "Tugas Pengawas & Proktor", 
+        "Kesiapan Infrastruktur Ruang"
+    ].map(l => wrapLabelString(l, 16));
+
+    const donutCtx = document.getElementById('aturanDonutChart').getContext('2d');
+    new Chart(donutCtx, {
+        type: 'doughnut',
+        data: {
+            labels: donutLabels,
+            datasets: [{
+                data: [50, 30, 20],
+                backgroundColor: [
+                    '#f97316', 
+                    '#06b6d4', 
+                    '#1e3a8a'  
+                ],
+                borderWidth: 2,
+                borderColor: '#ffffff'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        padding: 20,
+                        font: { family: "'Segoe UI', sans-serif", size: 12 }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            } else {
+                              return label;
+                            }
+                        }
+                    }
+                }
+            },
+            cutout: '65%'
+        }
+    });
+
+    const radarLabels = [
+        "Kedisiplinan Waktu Kehadiran",
+        "Integritas & Kejujuran Ujian",
+        "Kepatuhan Teknis Sistem CAT",
+        "Pemeliharaan Ketertiban Ruang",
+        "Kelengkapan Administrasi Ujian"
+    ].map(l => wrapLabelString(l, 16));
+
+    const radarCtx = document.getElementById('kepatuhanRadarChart').getContext('2d');
+    new Chart(radarCtx, {
+        type: 'radar',
+        data: {
+            labels: radarLabels,
+            datasets: [
+                {
+                    label: 'Pengawas Ruang',
+                    data: [90, 80, 60, 95, 100],
+                    backgroundColor: 'rgba(6, 182, 212, 0.2)',
+                    borderColor: '#06b6d4',
+                    pointBackgroundColor: '#06b6d4',
+                    borderWidth: 2
+                },
+                {
+                    label: 'Peserta Ujian',
+                    data: [95, 100, 90, 85, 70],
+                    backgroundColor: 'rgba(249, 115, 22, 0.2)',
+                    borderColor: '#f97316',
+                    pointBackgroundColor: '#f97316',
+                    borderWidth: 2
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                r: {
+                    angleLines: { color: 'rgba(0,0,0,0.1)' },
+                    grid: { color: 'rgba(0,0,0,0.1)' },
+                    pointLabels: {
+                        font: { family: "'Segoe UI', sans-serif", size: 11, weight: 'bold' },
+                        color: '#334155'
+                    },
+                    ticks: {
+                        display: false,
+                        min: 0,
+                        max: 100,
+                        stepSize: 20
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                },
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            } else {
+                              return label;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+
 </body>
 </html>
